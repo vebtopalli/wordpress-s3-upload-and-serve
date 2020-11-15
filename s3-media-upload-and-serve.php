@@ -25,7 +25,7 @@ function initiate_s3_upload_and_serve_config_func( $args ) {
     $file_name_only=basename($main_file); // get file name only
 
     $baseurl=$upload_dir['baseurl']; // base_url of upload dir.
-    $wp_content_dir=str_replace(array('http://'.$_SERVER['SERVER_NAME'].'/','https://'.$_SERVER['SERVER_NAME'].'/'),'',$baseurl);// remove link of website.
+    $wp_content_dir=str_replace(array('http://'.$_SERVER['HTTP_HOST'].'/','https://'.$_SERVER['HTTP_HOST'].'/'),'',$baseurl);// remove link of website.
     
     $file_key=$wp_content_dir.'/'.$uploaded_dir_path.$file_name_only; // join the dir and file name.
 
