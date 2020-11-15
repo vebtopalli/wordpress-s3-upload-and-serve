@@ -1,4 +1,4 @@
-Include the file `s3-media-upload-and-serve.php` directly into your theme or plugins.
+Include the folder into your  plugins folder (i.e /wp-content/plugins).
 
 
 ## Replace the DEFINED CONTSTANTS.
