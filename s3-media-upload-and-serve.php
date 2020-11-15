@@ -6,12 +6,28 @@ function initiate_s3_upload_and_serve_func(){
     define( 'S3_PLUGIN_PATH_URL', plugin_dir_path( __FILE__ ) );
 
     // define your configuration settings.
-    define( 'S3_BUCKET_NAME', 'your_bucket_name' );
-    define( 'S3_KEY', 'your_key' );
-    define( 'S3_SECRET', 'your_secret' );
+    define( 'S3_BUCKET_NAME', 'your_bucket_name' ); // your bucket name
+    define( 'S3_KEY', 'your_key' ); // your IAM key.
+    define( 'S3_SECRET', 'your_secret' ); // your IAM sercret.
 
-    add_filter( 'wp_generate_attachment_metadata', 'initiate_s3_upload_and_serve_config_func' );
+    define( 'S3_YOUR_WEBSITE_URL', 'your_website_url' ); // your website url.
+    define( 'S3_CL_OR_CN_NAME', 'your_cloudflare_or_cname_url' ); // your cname or cloudflare or direct s3 bucket ulr.
+
+    if(is_admin()){ // do work only if it's on admin panel.
+        add_filter( 'wp_generate_attachment_metadata', 'initiate_s3_upload_and_serve_config_func' );
+    }
 }
+
+
+// serve files from s3 bucket.
+add_filter('wp_get_attachment_url', 'change_get_attachment_url_on_view_func', 10, 2);
+function change_get_attachment_url_on_view_func($url, $post_id) {
+
+   $url=str_replace(S3_YOUR_WEBSITE_URL,S3_CL_OR_CN_NAME,$url);
+
+   return $url;
+}
+
 
 
 function initiate_s3_upload_and_serve_config_func( $args ) {
