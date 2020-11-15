@@ -4,21 +4,21 @@ use Aws\S3\S3Client;
 
 
 function insertFileToS3Bucket($fileUrl,$sourceFile){
-	$bucketName='your_bucket_name';
+	$bucketName=S3_BUCKET_NAME;
 	
 	try {
 		$s3 = new S3Client([
 			'version' => 'latest',
 			'region'  => 'eu-central-1',
 			'credentials' => [
-				'key'    => "your_key",
-				'secret' => "your_secret",
+				'key'    => S3_KEY,
+				'secret' => S3_SECRET,
 			]
 		]);
 		$result = $s3->putObject([
 			'Bucket' => $bucketName,
 			'Key'    => $fileUrl,
-			'ACL'    => 'private',
+			'ACL'    => 'public-read',
 			'SourceFile' => $sourceFile,
 		]);
 		return $result;
