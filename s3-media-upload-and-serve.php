@@ -1,4 +1,13 @@
 <?php
+/**
+ * Plugin Name: S3 MEDIA UPLOAD AND SERVE
+ * Plugin URI: https://github.com/vebtopalli/wordpress-s3-upload-and-serve
+ * Description: Upload and Serve images from S3 (AWS).
+ * Version: 1.0
+ * Author: Veb Topalli
+ * Author URI: https://github.com/vebtopalli/wordpress-s3-upload-and-serve
+ */
+
 
 add_action('init','initiate_s3_upload_and_serve_func');
 function initiate_s3_upload_and_serve_func(){
