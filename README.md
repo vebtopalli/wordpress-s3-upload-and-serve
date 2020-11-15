@@ -3,9 +3,10 @@ Include the file `s3-media-upload-and-serve.php` directly into your theme or plu
 
 ## Replace the DEFINED CONTSTANTS.
 
+Define into file `s3-media-upload-and-serve.php` the rows :
+
 ```
 
-Define into file `s3-media-upload-and-serve.php` the rows :
 
 S3_BUCKET_NAME => With your bucket name
 
